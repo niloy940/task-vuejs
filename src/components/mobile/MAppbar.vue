@@ -31,7 +31,7 @@
 
       <router-link v-if="loggedIn" to="/admin/add-post">
         <v-btn small text>
-          <span>ADD POST</span>
+          <span>ADD</span>
         </v-btn>
       </router-link>
 
