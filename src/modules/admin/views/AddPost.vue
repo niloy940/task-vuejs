@@ -29,7 +29,7 @@
 
 <script>
 export default {
-  title: "Login",
+  title: "Add Post",
 
   data: () => ({
     valid: true,

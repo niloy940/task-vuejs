@@ -1,49 +1,49 @@
 <template>
-  <div class="hidden-xs-only">
+  <div class="hidden-sm-and-up">
     <v-app-bar app color="primary" dark>
-      <div class="d-flex align-center">
+      <div class="d-flex align-center mr-1">
         <v-img
           alt="Vuetify Logo"
           class="shrink mr-2"
           contain
           src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
           transition="scale-transition"
-          width="40"
+          width="20"
         />
 
-        <h1>Blog</h1>
+        <h3>Blog</h3>
       </div>
 
       <v-spacer></v-spacer>
 
       <router-link to="/">
-        <v-btn text>
-          <span class="mr-2">Home</span>
-          <!-- <v-icon>mdi-open-in-new</v-icon> -->
+        <v-btn small text>
+          <span class="">Home</span>
+          <!-- <v-icon>mdi-home</v-icon> -->
         </v-btn>
       </router-link>
 
       <router-link to="/posts">
-        <v-btn text>
-          <span class="mr-2">Posts</span>
+        <v-btn small text>
+          <span>Posts</span>
         </v-btn>
       </router-link>
 
       <router-link v-if="loggedIn" to="/admin/add-post">
-        <v-btn text>
-          <span class="mr-2">ADD POST</span>
+        <v-btn small text>
+          <span>ADD POST</span>
         </v-btn>
       </router-link>
 
       <router-link v-if="!loggedIn" to="/auth/login">
-        <v-btn text>
-          <span class="mr-2">LOGIN</span>
+        <v-btn small text>
+          <span>LOGIN</span>
         </v-btn>
       </router-link>
 
       <router-link v-if="loggedIn" to="/auth/logout">
-        <v-btn text>
-          <span class="mr-2">LOGOUT</span>
+        <v-btn small text>
+          <span>LOGOUT</span>
         </v-btn>
       </router-link>
     </v-app-bar>
