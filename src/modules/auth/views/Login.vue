@@ -8,8 +8,8 @@
       lazy-validation
     >
       <v-text-field
-        v-model="form.username"
-        :rules="usernameRules"
+        v-model="email"
+        :rules="emailRules"
         label="E-mail"
         type="email"
         required
@@ -17,7 +17,7 @@
 
       <v-text-field
         type="password"
-        v-model="form.password"
+        v-model="password"
         :counter="6"
         :rules="passwordRules"
         label="Password"
@@ -25,7 +25,7 @@
       ></v-text-field>
 
       <v-btn
-        :disabled="!valid || form.errors.any()"
+        :disabled="!valid"
         type="submit"
         color="success"
         class="mr-4"
@@ -41,35 +41,28 @@
 </template>
 
 <script>
-import Form from "vform";
-// import User from '../../models/User'
 export default {
   title: "Login",
 
   data: () => ({
-    valid: true,
-    form: new Form({
-      username: "",
-      password: "",
-    }),
-    usernameRules: [
+    valid: false,
+    email: "",
+    emailRules: [
       (v) => !!v || "E-mail is required",
       (v) => /.+@.+\..+/.test(v) || "E-mail must be valid",
     ],
+
+    password: "",
     passwordRules: [
       (v) => !!v || "Password is required",
       (v) =>
-        (v && v.length >= 6) ||
-        "Password must be grater than or equal 6 characters",
+        (v && v.length >= 6) || "Password must be grater than 5 characters",
     ],
-    // checkbox: true
   }),
 
   methods: {
     validate() {
-      if (this.$refs.form.validate()) {
-        this.snackbar = true;
-      }
+      this.$refs.form.validate();
     },
 
     reset() {
@@ -78,13 +71,14 @@ export default {
 
     resetValidation() {
       this.$refs.form.resetValidation();
-      this.form.errors.clear();
     },
 
     login() {
-      this.$store.dispatch("auth/retrieveToken").then(() => {
-        this.$router.push({ name: "home" });
-      });
+      if (this.valid) {
+        this.$store.dispatch("auth/retrieveToken").then(() => {
+          this.$router.push({ name: "home" });
+        });
+      }
     },
   },
 };

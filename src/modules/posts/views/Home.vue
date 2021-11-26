@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h1>All Posts</h1>
     <PostList :posts="loadedPosts" />
   </div>
 </template>
@@ -9,6 +8,8 @@
 import PostList from "../components/PostList";
 
 export default {
+  title: "Posts",
+
   components: { PostList },
 
   data() {

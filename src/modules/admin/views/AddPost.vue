@@ -21,7 +21,7 @@
       ></v-text-field>
 
       <v-btn :disabled="!valid" type="submit" color="success" class="mr-4"
-        >Login</v-btn
+        >Add Post</v-btn
       >
     </v-form>
   </v-container>
